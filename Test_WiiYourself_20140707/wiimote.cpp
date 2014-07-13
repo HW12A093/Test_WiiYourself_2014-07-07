@@ -1755,9 +1755,15 @@ int wiimote::ParseReadAddress (BYTE* buff)
 			static const QWORD GH3_GHWT_GUITAR     = 0x030120A40000ULL;
 			static const QWORD GHWT_DRUMS	       = 0x030120A40001ULL;
 			static const QWORD BALANCE_BOARD	   = 0x020420A40000ULL;
+			/*2014”N7ŒŽ13“ú18Žž27•ª‰ü‘¢ http://www.cg-ya.net/imedia/wiiremote/wiiyourself_wiiremoteplus/
 			static const QWORD MOTION_PLUS		   = 0x050420A40000ULL;
 			static const QWORD MOTION_PLUS_DETECT  = 0x050020a60000ULL;
 			static const QWORD MOTION_PLUS_DETECT2 = 0x050420a60000ULL;
+			*/
+			static const QWORD MOTION_PLUS		   = 0x50420A40001;
+			static const QWORD MOTION_PLUS_DETECT  = 0x50020a60001;
+			static const QWORD MOTION_PLUS_DETECT2 = 0x50420a60001;
+
 			static const QWORD PARTIALLY_INSERTED  = 0xffffffffffffULL;
 
 			// MotionPlus: _before_ it's been activated

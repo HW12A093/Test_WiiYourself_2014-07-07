@@ -51,11 +51,11 @@ int main(void){
 		//wiiリモコンのデータを更新
 		//remote.RefreshState();
 		
-		if (remote.Button.B() == true){
+		if (remote.Button.A() == true){
 			remote.SetLEDs(0x1);
 			std::cout << "	A = true"<< std::endl;
 		}
-		else if (remote.Button.B() == false){
+		else if (remote.Button.A() == false){
 			remote.SetLEDs(0x8);
 			std::cout << "	A = false" << std::endl;
 		}
