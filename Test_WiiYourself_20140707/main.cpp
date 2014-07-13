@@ -21,10 +21,25 @@ int main(void){
 	//接続済み
 	if (remote.IsConnected()){
 		printf("OK!\n");
+		remote.SetLEDs(0x1);
 	}
 
-	while (true){
+	if (!remote.IsConnected()){
+		std::cout << "すでに通信が切れている。";
+		remote.SetLEDs(0x8);
+		return -1;
+	}
+	for (int i = 0; i < 10; i++){
+		remote.SetLEDs(0x1);
+		remote.SetLEDs(0x8);
+	}
+	remote.SetLEDs(0x7);
+	Sleep(1000);
+	
+	for (int i = 0; i < 30;i++){
 
+		Sleep(1000);
+		/*
 		if (remote.ConnectionLost() == true){
 			std::cout << "Wiiリモコンが切断されました。" << std::endl;
 			while (!remote.Connect(wiimote::FIRST_AVAILABLE)) Sleep(1);
@@ -32,19 +47,21 @@ int main(void){
 			if (remote.IsConnected()){
 				printf("OK!\n");
 			}
-		}
-
+		}*/
+		
 		//wiiリモコンのデータを更新
-		remote.RefreshState();
-
+		//remote.RefreshState();
+		
 		if (remote.Button.A() == true){
 			remote.SetLEDs(0x1);
+			std::cout << "A = true i=" << i << std::endl;
 		}
-		else{
+		else if (remote.Button.A() == false){
 			remote.SetLEDs(0x8);
+			std::cout << "A = false i=" << i << std::endl;
 		}
 	}
-
+	
 
 	return 0;
 }
