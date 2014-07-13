@@ -37,8 +37,7 @@ int main(void){
 	Sleep(1000);
 	
 	for (int i = 0; i < 30;i++){
-
-		Sleep(1000);
+		std::wcout << "i =" << i << std::endl;
 		/*
 		if (remote.ConnectionLost() == true){
 			std::cout << "Wiiリモコンが切断されました。" << std::endl;
@@ -52,14 +51,26 @@ int main(void){
 		//wiiリモコンのデータを更新
 		//remote.RefreshState();
 		
-		if (remote.Button.A() == true){
+		if (remote.Button.B() == true){
 			remote.SetLEDs(0x1);
-			std::cout << "A = true i=" << i << std::endl;
+			std::cout << "	A = true"<< std::endl;
 		}
-		else if (remote.Button.A() == false){
+		else if (remote.Button.B() == false){
 			remote.SetLEDs(0x8);
-			std::cout << "A = false i=" << i << std::endl;
+			std::cout << "	A = false" << std::endl;
 		}
+
+		if (i%5 == 0){
+			remote.SetRumble(true); // 振動させる(振動させ続けるには連続して呼ぶ必要がある)http://keanwortd.o-oi.net/Page/3/
+		} else {
+			remote.SetRumble(false);
+		}
+
+		std::cout << "	角度 ピッチ ＝ " << remote.Acceleration.Orientation.Pitch << std::endl;
+		std::cout << "	角度 ロール ＝ " << remote.Acceleration.Orientation.Roll << std::endl;
+		std::cout << std::endl;
+
+		Sleep(1000);
 	}
 	
 
