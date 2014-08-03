@@ -6,6 +6,7 @@
 #define WII_YOURSELF_LICENSE_WSTRING L"contains WiiYourself! wiimote code by gl.tter\nhttp://gl.tter.org\n"
 
 
+
 int main(void){
 
 	SetConsoleTitle(_T("Wiiリモコンプラスコントロールテスト"));
@@ -36,7 +37,7 @@ int main(void){
 	remote.SetLEDs(0x7);
 	Sleep(1000);
 	
-	for (int i = 0; i < 30;i++){
+	for (int i = 0; i<30; i++){
 		std::wcout << "i =" << i << std::endl;
 		/*
 		if (remote.ConnectionLost() == true){
@@ -69,6 +70,20 @@ int main(void){
 		std::cout << "	角度 ピッチ ＝ " << remote.Acceleration.Orientation.Pitch << std::endl;
 		std::cout << "	角度 ロール ＝ " << remote.Acceleration.Orientation.Roll << std::endl;
 		std::cout << std::endl;
+		
+
+		//コマンド入力チェック
+		if (remote.Button.A() == true){
+			std::cout << "A= true" << std::endl;
+		}
+		if (remote.Button.B() == true){
+			std::cout << "B = true" << std::endl;
+		}
+		if (remote.Button.Home() == false){
+			std::cout << "HOME = false" << std::endl;
+		}
+		//コマンド入力チェック
+
 
 		Sleep(1000);
 	}
