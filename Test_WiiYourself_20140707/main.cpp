@@ -36,8 +36,13 @@ int main(void){
 	}
 	remote.SetLEDs(0x7);
 	Sleep(1000);
+
+	//モーションプラスを有効にしてみる 2014年8月4日23時09分
+	remote.EnableMotionPlus();
 	
-	for (int i = 0; i<30; i++){
+	while(true){//for (int i = 0; i<30; i++){
+		int i = 0;
+		i++;
 		std::wcout << "i =" << i << std::endl;
 		/*
 		if (remote.ConnectionLost() == true){
@@ -84,6 +89,7 @@ int main(void){
 		}
 		//コマンド入力チェック
 
+		//HOMEボタンでプログラム終了
 		if (remote.Button.Home() == true){
 			return 0;
 		}
