@@ -5,7 +5,43 @@
 // 表示しなきゃいけないらしいライセンス文
 #define WII_YOURSELF_LICENSE_WSTRING L"contains WiiYourself! wiimote code by gl.tter\nhttp://gl.tter.org\n"
 
+int main() //丸コピソース(バイブうるさいので動作改変したが) → http://dannymsr.blog.fc2.com/blog-entry-4.html
+{
+	//wiiyourself!の読み込み
+	wiimote remote;
 
+	printf("Conect...  ");
+
+	//wiiリモコン接続完了まで待機
+	while (!remote.Connect(wiimote::FIRST_AVAILABLE))Sleep(1);
+	remote.SetReportType(wiimote::IN_BUTTONS_ACCEL_IR);
+
+	//接続済み
+	if (remote.IsConnected()){
+		printf("OK!\n");
+
+		while (true){
+			//wiiリモコンのデータを更新
+			remote.RefreshState();
+
+			//左端のLED点灯
+			remote.SetLEDs(0x1);
+
+			if (remote.Button.A()){
+				//remote.SetRumble(true);
+				return 0;
+			}
+			else{
+				//remote.SetRumble(false);
+			}
+
+			Sleep(100);
+		}
+	}
+}
+
+
+/*
 
 int main(void){
 
@@ -36,7 +72,9 @@ int main(void){
 	}
 	remote.SetLEDs(0x7);
 	Sleep(1000);
-	
+
+	remote.SetReportType(true);
+
 	for (int i = 0; i<30; i++){
 		std::wcout << "i =" << i << std::endl;
 		/*
@@ -47,7 +85,7 @@ int main(void){
 			if (remote.IsConnected()){
 				printf("OK!\n");
 			}
-		}*/
+		}
 		
 		//wiiリモコンのデータを更新
 		//remote.RefreshState();
@@ -90,4 +128,4 @@ int main(void){
 	
 
 	return 0;
-}
+}*/
