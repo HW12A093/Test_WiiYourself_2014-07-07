@@ -50,7 +50,7 @@ int main(void){
 		}*/
 		
 		//wiiリモコンのデータを更新
-		//remote.RefreshState();
+		remote.RefreshState();
 		
 		if (remote.Button.A() == true){
 			remote.SetLEDs(0x1);
@@ -83,7 +83,6 @@ int main(void){
 			std::cout << "HOME = false" << std::endl;
 		}
 		//コマンド入力チェック
-
 
 		Sleep(1000);
 	}
