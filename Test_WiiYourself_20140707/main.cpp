@@ -84,6 +84,10 @@ int main(void){
 		}
 		//コマンド入力チェック
 
+		if (remote.Button.Home() == true){
+			return 0;
+		}
+
 		Sleep(1000);
 	}
 	
